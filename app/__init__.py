@@ -22,8 +22,11 @@ def run():
                                      Apartment.date_time == date_time):
                     continue
                 else:
-                    apartment.save()
+                    if apartment.title is None:
+                        continue
+
                     new_apartments.append(apartment)
+                    apartment.save()
 
             if new_apartments:
                 for apartment in new_apartments:
