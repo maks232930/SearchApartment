@@ -17,14 +17,11 @@ def run():
             apartments = Apartment.select()
 
             for title, price, location, date_time in now_apartments:
-                apartment = Apartment(id=title, location=location, price=price, date_time=date_time)
+                apartment = Apartment(title=title, location=location, price=price, date_time=date_time)
                 if apartments.filter(Apartment.title == title, Apartment.location == location, Apartment.price == price,
                                      Apartment.date_time == date_time):
                     continue
                 else:
-                    if apartment.title is None:
-                        continue
-
                     new_apartments.append(apartment)
                     apartment.save()
 
