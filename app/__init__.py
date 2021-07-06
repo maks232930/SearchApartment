@@ -1,5 +1,5 @@
-from time import sleep
 from datetime import datetime
+from time import sleep
 
 import requests
 
@@ -21,6 +21,7 @@ def run():
                 apartment = Apartment(title=title, location=location, price=price, date_time=date_time)
                 if apartments.filter(Apartment.title == title, Apartment.location == location, Apartment.price == price,
                                      Apartment.date_time == date_time):
+
                     continue
                 else:
                     new_apartments.append(apartment)

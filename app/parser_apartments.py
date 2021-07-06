@@ -44,13 +44,12 @@ def get_html_apartments(url):
 def get_apartments(url):
     apartments, class_list = get_html_apartments(url)
     apartments_list = []
-
-    for apartment in apartments:
-        try:
+    try:
+        for apartment in apartments:
             date_time = get_date_time_in_normal_format(
                 apartment.find('div', attrs={'class': class_list[3]}).find('span').text)
 
-            if date_time <= datetime.datetime.strptime(DATE_TIME_START, '%Y-%m-%d %H:%M:%S'):
+            if date_time < datetime.datetime.strptime(DATE_TIME_START, '%Y-%m-%d %H:%M:%S'):
                 continue
 
             title = apartment.find('div', attrs={'class': class_list[0]}).text
@@ -61,8 +60,8 @@ def get_apartments(url):
                 price = price.text[:-11].replace(' ', '')
             location = apartment.find('span', attrs={'class': class_list[2]}).text
 
-            apartments_list.append([title, price, location, date_time])
+            apartments_list.append((title, price, location, date_time))
 
             return apartments_list
-        except ValueError:
-            print('Не правильный формат(возможно DATE_TIME_START)!')
+    except ValueError:
+        print('Не правильный формат(возможно DATE_TIME_START)!')
