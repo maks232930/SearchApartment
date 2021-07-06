@@ -30,6 +30,7 @@ def run():
                 for apartment in new_apartments:
                     message = f'Название: {apartment.title}. Цена: {apartment.price}. Местоположение: {apartment.location}. Время загрузки: {apartment.date_time}'
                     send_sms(message)
+                    print(message)
             else:
                 print(f'Нет обновлений {datetime.now()}')
             sleep(TIME_SLEEP)
