@@ -10,6 +10,7 @@ ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
 AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 
 URL = os.environ['URL']
+DATE_TIME_START = '2021-07-06 00:00:00'  # %Y-%m-%d %H:%M:%S
 TIME_SLEEP = 30
 
 USER = os.environ['MYSQL_USER']

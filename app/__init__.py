@@ -1,4 +1,5 @@
 from time import sleep
+from datetime import datetime
 
 import requests
 
@@ -30,9 +31,9 @@ def run():
                     message = f'Название: {apartment.title}. Цена: {apartment.price}. Местоположение: {apartment.location}. Время загрузки: {apartment.date_time}'
                     send_sms(message)
             else:
-                print('Нет обновлений')
+                print(f'Нет обновлений {datetime.now()}')
             sleep(TIME_SLEEP)
         except requests.exceptions.ConnectionError:
-            print('Нет интернета!')
+            print(f'Нет интернета {datetime.now()}!')
             sleep(TIME_SLEEP)
             continue
