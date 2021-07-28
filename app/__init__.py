@@ -39,3 +39,9 @@ def run():
             print(f'Нет интернета {datetime.now()}!')
             sleep(TIME_SLEEP)
             continue
+        except TypeError:
+            print('Нет квартир. Ждем 60 сек')
+            sleep(60)
+            print('Продолжаем')
+            continue
+
